@@ -89,6 +89,14 @@ class Payment implements \JsonSerializable
     private $digitableLine;
 
     private $address;
+    
+    private $instructions;
+
+    private $assignor;
+
+    private $demonstrative;
+
+    private $identification;
 
     public function __construct($amount = 0, $installments = 1)
     {
@@ -132,6 +140,10 @@ class Payment implements \JsonSerializable
         $this->barCodeNumber   =  isset($data->BarCodeNumber)?$data->BarCodeNumber: null;
         $this->digitableLine   =  isset($data->DigitableLine)?$data->DigitableLine: null;
         $this->address         =  isset($data->Address)?$data->Address: null;
+        $this->instructions    =  isset($data->Instructions)?$data->Instructions: null;
+        $this->assignor        =  isset($data->Assignor)?$data->Assignor: null;
+        $this->demonstrative   =  isset($data->Demonstrative)?$data->Demonstrative: null;
+        $this->identification  =  isset($data->Identification)?$data->Identification: null;
 
         $this->authenticationUrl = isset($data->AuthenticationUrl)? $data->AuthenticationUrl: null;
         $this->tid = isset($data->Tid)? $data->Tid: null;
@@ -598,5 +610,45 @@ class Payment implements \JsonSerializable
     {
         $this->address = $address;
         return $this;
+    }
+    
+    public function getInstructions() 
+    {
+        return $this->instructions;
+    }
+
+    public function setInstructions($instructions) 
+    {
+        $this->instructions = $instructions;
+    }
+
+    public function getAssignor() 
+    {
+        return $this->assignor;
+    }
+
+    public function setAssignor($assignor) 
+    {
+        $this->assignor = $assignor;
+    }
+
+    public function getDemonstrative() 
+    {
+        return $this->demonstrative;
+    }
+
+    public function setDemonstrative($demonstrative) 
+    {
+        $this->demonstrative = $demonstrative;
+    }
+
+    public function getIdentification() 
+    {
+        return $this->identification;
+    }
+
+    public function setIdentification($identification) 
+    {
+        $this->identification = $identification;
     }
 }
